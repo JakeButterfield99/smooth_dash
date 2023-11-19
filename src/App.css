@@ -1,0 +1,721 @@
+:root {
+  --app_width: 300px;
+  --app_height: 400px;
+}
+
+.App {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  font-family: 'Poppins';
+  overflow: hidden;
+}
+
+.background-day {
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+}
+
+.background-wrapper {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1;
+}
+
+.box-shadow {
+  box-shadow: 0 0 2px #000000;
+}
+
+.text-shadow {
+  text-shadow: 0 0 5px #000;
+}
+
+/*
+  Weather
+*/
+.weather {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  top: 20px;
+  left: 20px;
+  width: 280px;
+  gap: 10px;
+}
+
+.weather.dark {
+  color: white;
+}
+
+.weather .top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.weather .top .wrapper {
+  flex: 1;
+  width: 100%;
+}
+
+.weather .top h1 {
+  font-size: 75px;
+  margin: 0;
+  color: white;
+}
+
+.degrees {
+  vertical-align: text-top;
+}
+
+.weather .top img {
+  height: 100px;
+}
+
+.weather .top .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.weather .top .container p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.weather .top .container div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.weather .top .container img {
+  height: 20px;
+}
+
+.weather .bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weather .bottom .future {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 5px;
+}
+
+.weather .bottom img {
+  height: 40px;
+}
+
+.weather .bottom h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.weather .bottom h2 {
+  margin: 0;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+/*
+  Effects
+*/
+
+.drop {
+  top: -40px;
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(hsla(0, 0%, 100%, .5)), to(hsla(0, 0%, 100%, .5)));
+  width: 1px;
+  height: 40px;
+  position: absolute;
+  bottom: 200px;
+  animation: fall 1s linear infinite;
+  -webkit-animation: fall 1s linear infinite;
+  opacity: 0.7;
+}
+
+.snow-drop {
+  top: -10px;
+  background: white;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  border-radius: 20px;
+  animation: fall 2s linear infinite;
+  -webkit-animation: fall 2s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+/*
+  Date
+*/
+.date {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.date h1,
+.date h2 {
+  margin: 0;
+  text-align: center;
+  color: white;
+  display: block;
+  text-transform: uppercase;
+}
+
+.date.dark h1,
+.date.dark h2 {
+  color: white;
+}
+
+.date h1 {
+  font-size: 8rem;
+}
+
+.date h2 {
+  font-size: 2rem;
+}
+
+/*
+  Search
+*/
+.search {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 30%;
+  height: 50px;
+  border-radius: 20px;
+}
+
+.search input {
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  border: none;
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+/*
+  Apps
+*/
+.apps {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  bottom: 30px;
+}
+
+.right-apps {
+  right: 30px;
+}
+
+.left-apps {
+  left: 30px;
+}
+
+.apps .app {
+  padding: 10px;
+  background: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.apps .app img {
+  height: 30px;
+  display: block;
+}
+
+.app-open-true {
+  animation-duration: 0.5s;
+  animation-name: slideup;
+}
+
+.app-open-false {
+  animation-duration: 0.5s;
+  animation-name: slidedown;
+}
+
+.active-app {
+  position: fixed;
+  right: 30px;
+  bottom: 100px;
+  background: white;
+  border-radius: 10px;
+  z-index: 9;
+  width: var(--app_width);
+  height: var(--app_height);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.active-app-left {
+  left: 30px;
+}
+
+.active-app>* {
+  padding: 10px;
+}
+
+.active-app .header {
+  display: flex;
+  align-items: center;
+  height: 30px;
+}
+
+.active-app .header h1 {
+  margin: 0;
+  font-size: 24px;
+  text-align: center;
+  flex: 1;
+  cursor: pointer;
+}
+
+.active-app .header img {
+  height: 30px;
+  cursor: pointer;
+}
+
+.active-app .content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.active-app .input {
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  padding: 0 10px;
+  font-family: 'Poppins';
+  margin-bottom: 10px;
+  width: 260px;
+}
+
+/*
+  Todo App
+*/
+
+.task {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.task input {
+  visibility: hidden;
+  display: block;
+  height: 0;
+  width: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+.task span {
+  height: 15px;
+  width: 15px;
+  border: 1px solid black;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.task input:checked+span {
+  background-color: black;
+}
+
+.task p {
+  margin: 0;
+}
+
+.task.checked-true p {
+  text-decoration: line-through;
+}
+
+/*
+  Notes
+*/
+
+.list {
+  min-height: var(--app_height);
+  width: var(--app_width);
+  z-index: 99;
+  position: absolute;
+  background-color: white;
+  padding: 0;
+}
+
+.list>* {
+  padding: 10px;
+}
+
+.list-open-true {
+  animation-duration: 0.5s;
+  animation-name: slideright;
+}
+
+.list-open-false {
+  animation-duration: 0.5s;
+  animation-name: slideleft;
+}
+
+.list .header {
+  display: flex;
+  flex-direction: row;
+}
+
+.list .header h1 {
+  margin: 10px 0;
+  font-size: 24px;
+  flex: 1;
+  cursor: pointer;
+  text-align: left;
+}
+
+.preview {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+  align-items: center;
+  gap: 10px;
+}
+
+.preview.active {
+  background-color: #ededed;
+}
+
+.preview:hover {
+  background-color: #e0e0e0;
+}
+
+.preview .content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  width: 80%;
+}
+
+.preview .content h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.preview .content p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.preview img {
+  height: 24px;
+}
+
+
+.note {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.note .title {
+  height: 30px;
+  padding: 0;
+  border: none;
+  font-size: 28px;
+  font-family: 'Poppins';
+}
+
+.note .text {
+  flex: 1;
+  font-size: 14px;
+  font-family: 'Poppins';
+  border: none;
+  resize: none;
+  margin-top: 10px;
+  width: 274px;
+  height: 100%;
+}
+
+.note .text:focus,
+.title:focus {
+  outline: none;
+}
+
+.notes .admin {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.notes .admin img {
+  height: 30px;
+  cursor: pointer;
+}
+
+/*
+  Apps
+*/
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.app-list .content {
+  padding: 0;
+}
+
+.app-list .entry {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  border-bottom: 1px solid black;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.app-list .entry:hover {
+  background-color: #e0e0e0;
+}
+
+.app-list .entry .desc {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.app-list .entry .desc h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.app-list .entry .desc p {
+  margin: 0;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.app-list .entry button {
+  background: none;
+  border-radius: 5px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.pomodoro {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pomodoro text {
+  text-shadow: 0 0 2px #000000;
+}
+
+.pomodoro h1 {
+  text-align: center;
+  color: white;
+  margin: 0;
+  font-size: 24px;
+  text-shadow: 0 0 2px #000000;
+}
+
+.pomodoro svg {
+  -webkit-filter: drop-shadow(0 0 2px #000);
+  filter: drop-shadow(0 0 2px #000);
+}
+
+.pomodoro img {
+  -webkit-filter: drop-shadow(0 0 2px #000);
+  filter: drop-shadow(0 0 2px #000);
+}
+
+.pomodoro .CircularProgressbar {
+  height: 200px;
+}
+
+.pomodoro .CircularProgressbar-trail {
+  opacity: 0.3 !important;
+}
+
+.pomodoro .CircularProgressbar-path {
+  stroke: white !important;
+}
+
+.pomodoro .CircularProgressbar-text {
+  fill: white !important;
+}
+
+.pomodoro .buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+}
+
+.pomodoro .buttons button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.pomodoro .buttons img {
+  height: 24px;
+}
+
+.lofi {
+  text-align: center;
+}
+
+.lofi .youtube-video {
+  display: none;
+}
+
+.lofi .buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.lofi .button {
+  cursor: pointer;
+}
+
+.lofi.dark {
+  color: white;
+}
+
+.lofi .button {
+  -webkit-filter: drop-shadow(0 0 2px #000);
+  filter: drop-shadow(0 0 2px #000);
+}
+
+.lofi h1,
+.lofi h2 {
+  margin: 10px;
+  color: white;
+}
+
+.lofi h2 {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.lofi h2:hover {
+  transform: translateY(-3px);
+}
+
+/*
+  Backgrounds
+*/
+
+.bg-option {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  padding-left: 10px;
+  margin-bottom: 5px;
+}
+
+.bg-option:hover {
+  background-color: #f9f1f1;
+  cursor: pointer;
+}
+
+.bg-option.active-true {
+  background-color: #f9f1f1;
+}
+
+.bg-option p {
+  margin: 0;
+}
+
+.bg-option .flag {
+  font-size: 28px;
+  margin-right: 10px;
+}
+
+/*
+  Animations
+*/
+
+@keyframes slideup {
+  from {
+    bottom: -500px;
+  }
+
+  to {
+    bottom: 100px;
+  }
+}
+
+@keyframes slidedown {
+  from {
+    bottom: 100px;
+  }
+
+  to {
+    bottom: -500px;
+  }
+}
+
+
+@keyframes slideright {
+  from {
+    left: calc(0px - var(--app_width));
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+@keyframes slideleft {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: calc(0px - var(--app_width));
+  }
+}
